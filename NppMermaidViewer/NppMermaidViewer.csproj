@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NppMermaidViewer</RootNamespace>
+    <AssemblyName>MermaidViewer</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <ProjectGuid>{B17BB6AC-9F5E-4D08-A466-9AF22C59B6F4}</ProjectGuid>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestorePackagesPath>$(MSBuildProjectDirectory)\packages</RestorePackagesPath>
+    <NppPath64>C:\Program Files\Notepad++</NppPath64>
+    <NppPath32>C:\Program Files (x86)\Notepad++</NppPath32>
+    <DllExportSdkPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8.1 Tools\</DllExportSdkPath>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Deterministic>true</Deterministic>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug-x64</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release-x64</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_t.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="UnmanagedExports.Repack.Upgrade" Version="1.2.1" GeneratePathProperty="true">
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack-Shell" Version="1.1.0" />
+    <PackageReference Include="Markdig" Version="0.37.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PluginInfrastructure\ClikeStringArray.cs" />
+    <Compile Include="PluginInfrastructure\DllExport\DllExportAttribute.cs" />
+    <Compile Include="PluginInfrastructure\Docking_h.cs" />
+    <Compile Include="PluginInfrastructure\GatewayDomain.cs" />
+    <Compile Include="PluginInfrastructure\IScintillaGateway.cs" />
+    <Compile Include="PluginInfrastructure\MenuCmdID_h.cs" />
+    <Compile Include="PluginInfrastructure\Msgs_h.cs" />
+    <Compile Include="PluginInfrastructure\NotepadPPGateway.cs" />
+    <Compile Include="PluginInfrastructure\NppPluginNETBase.cs" />
+    <Compile Include="PluginInfrastructure\NppPluginNETHelper.cs" />
+    <Compile Include="PluginInfrastructure\Preference_h.cs" />
+    <Compile Include="PluginInfrastructure\Scintilla_iface.cs" />
+    <Compile Include="PluginInfrastructure\ScintillaGateway.cs" />
+    <Compile Include="PluginInfrastructure\UnmanagedExports.cs" />
+    <Compile Include="PluginInfrastructure\Win32.cs" />
+    <Compile Include="PluginInfrastructure\resource_h.cs" />
+    <Compile Include="Utils\Npp.cs" />
+    <Compile Include="Utils\ArrayExtensions.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="MarkdownRenderer.cs" />
+    <Compile Include="MermaidViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Assets\article.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\code_blocks.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\dark_mode.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon_t.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon_t.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\left_panel_close.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\left_panel_open.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\light_mode.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\list_alt.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\mobiledata_off.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\mermaid.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\filter_none.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\photo_library.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\two_pager.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon_t.ico" />
+    <Content Include="LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Docs\Design_NppMermaidViewer.md" />
+    <None Include="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Condition="Exists($(PkgUnmanagedExports_Repack_Upgrade))" Project="$(PkgUnmanagedExports_Repack_Upgrade)\build\UnmanagedExports.Repack.Upgrade.targets" />
+  <Target Name="CopyBin" DependsOnTargets="Build" AfterTargets="Build">
+    <ItemGroup>
+      <NPP64BIT Include="$(NppPath64)\plugins\MermaidViewer" />
+      <NPP32BIT Include="$(NppPath32)\plugins\MermaidViewer" />
+      <NPP64BITASSETS Include="$(NppPath64)\plugins\MermaidViewer\Assets" />
+      <NPP64BITWEBVIEW2 Include="$(NppPath64)\plugins\MermaidViewer\runtimes\win-x64\native" />
+      <NPP32BITASSETS Include="$(NppPath32)\plugins\MermaidViewer\Assets" />
+      <SyncScrollAssets Include="$(TargetDir)Assets\*.svg" />
+    </ItemGroup>
+    <MakeDir Directories="@(NPP64BIT)" Condition="'$(Platform)' == 'x64'" />
+    <MakeDir Directories="@(NPP32BIT)" Condition="'$(Platform)' == 'x86'" />
+    <MakeDir Directories="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" />
+    <MakeDir Directories="@(NPP64BITWEBVIEW2)" Condition="'$(Platform)' == 'x64'" />
+    <MakeDir Directories="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="@(NPP64BIT)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="@(NPP32BIT)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="LICENSE.md" DestinationFiles="$(NppPath64)\plugins\MermaidViewer\License.md" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="LICENSE.md" DestinationFiles="$(NppPath32)\plugins\MermaidViewer\License.md" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="Assets\mermaid.min.js" DestinationFolder="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="Assets\mermaid.min.js" DestinationFolder="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="Assets\icon.png" DestinationFolder="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="Assets\icon.png" DestinationFolder="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(ReferenceCopyLocalPaths)" DestinationFolder="@(NPP64BIT)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(ReferenceCopyLocalPaths)" DestinationFolder="@(NPP32BIT)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(SyncScrollAssets)" DestinationFolder="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(SyncScrollAssets)" DestinationFolder="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)Assets\icon_t.ico" DestinationFolder="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)Assets\icon_t.ico" DestinationFolder="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)Assets\icon_t.png" DestinationFolder="@(NPP64BITASSETS)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)Assets\icon_t.png" DestinationFolder="@(NPP32BITASSETS)" Condition="'$(Platform)' == 'x86'" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetDir)runtimes\win-x64\native\WebView2Loader.dll" DestinationFolder="@(NPP64BITWEBVIEW2)" Condition="'$(Platform)' == 'x64'" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
