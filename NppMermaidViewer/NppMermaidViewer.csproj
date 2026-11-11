@@ -150,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Docs\Design_NppMermaidViewer.md" />
-    <None Include="README.md">
+    <None Include="..\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
